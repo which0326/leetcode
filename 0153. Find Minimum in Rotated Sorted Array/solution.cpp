@@ -10,17 +10,13 @@ public:
     int findMin(const vector<int>& nums) {
         int leftIdx = 0;
         int rightIdx = nums.size() - 1;
-        int minNum = -1;
 
         while (leftIdx < rightIdx) {
-            if (nums[leftIdx] < nums[rightIdx]) {
-                return nums[leftIdx];
-            }
-            int mid = leftIdx + (rightIdx - leftIdx) / 2;
-            if (nums[mid] >= nums[leftIdx]) {
-                leftIdx = mid + 1;
+            int midIdx = leftIdx + (rightIdx - leftIdx) / 2;
+            if (nums[midIdx] < nums[rightIdx]) {
+                rightIdx = midIdx;
             } else {
-                rightIdx = mid;
+                leftIdx = midIdx + 1;
             }
         }
         return nums[leftIdx];
